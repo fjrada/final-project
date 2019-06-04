@@ -1,0 +1,43 @@
+<h1>
+  Add a new category
+</h1>
+
+<hr>
+
+<%= render("category_templates/validation_failures.html.erb") %>
+
+<form action="/insert_category_record" method="post">
+  <div>
+    <label for="name">
+      Name
+    </label>
+
+    <input type="text" id="name" name="name" value="<%= @category.name %>">
+  </div>
+
+  <div>
+    <label for="frequency">
+      Frequency
+    </label>
+
+    <input type="text" id="frequency" name="frequency" value="<%= @category.frequency %>">
+  </div>
+
+  <div>
+    <label for="user_id">
+      User
+    </label>
+
+    <input type="text" id="user_id" name="user_id" value="<%= @category.user_id %>">
+  </div>
+
+  <button>
+    Create category
+  </button>
+</form>
+
+<hr>
+
+<a href="/categories">
+  Go back
+</a>

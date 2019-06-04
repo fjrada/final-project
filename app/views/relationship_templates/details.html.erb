@@ -1,0 +1,61 @@
+<h1>
+  Relationship #<%= @relationship.id %> details
+</h1>
+
+<div>
+  <div>
+    <a href="/relationships">
+      Go back
+    </a>
+  </div>
+
+  <div>
+    <a href="/existing_relationship_form/<%= @relationship.id %>">
+      Edit relationship
+    </a>
+  </div>
+
+  <div>
+    <a href="/delete_relationship/<%= @relationship.id %>">
+      Delete relationship
+    </a>
+  </div>
+</div>
+
+<dl>
+  <dt>
+    Owner
+  </dt>
+  <dd>
+    <%= @relationship.owner_id %>
+  </dd>
+
+  <dt>
+    Relative
+  </dt>
+  <dd>
+    <%= @relationship.relative_id %>
+  </dd>
+
+  <dt>
+    Nature
+  </dt>
+  <dd>
+    <%= @relationship.nature %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@relationship.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@relationship.updated_at) %> ago
+  </dd>
+</dl>
+

@@ -1,0 +1,54 @@
+<h1>
+  Interest #<%= @interest.id %> details
+</h1>
+
+<div>
+  <div>
+    <a href="/interests">
+      Go back
+    </a>
+  </div>
+
+  <div>
+    <a href="/existing_interest_form/<%= @interest.id %>">
+      Edit interest
+    </a>
+  </div>
+
+  <div>
+    <a href="/delete_interest/<%= @interest.id %>">
+      Delete interest
+    </a>
+  </div>
+</div>
+
+<dl>
+  <dt>
+    Name
+  </dt>
+  <dd>
+    <%= @interest.name %>
+  </dd>
+
+  <dt>
+    User
+  </dt>
+  <dd>
+    <%= @interest.user_id %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@interest.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@interest.updated_at) %> ago
+  </dd>
+</dl>
+

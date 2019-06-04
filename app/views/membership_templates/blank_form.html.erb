@@ -1,0 +1,35 @@
+<h1>
+  Add a new membership
+</h1>
+
+<hr>
+
+<%= render("membership_templates/validation_failures.html.erb") %>
+
+<form action="/insert_membership_record" method="post">
+  <div>
+    <label for="contact_id">
+      Contact
+    </label>
+
+    <input type="text" id="contact_id" name="contact_id" value="<%= @membership.contact_id %>">
+  </div>
+
+  <div>
+    <label for="interest_id">
+      Interest
+    </label>
+
+    <input type="text" id="interest_id" name="interest_id" value="<%= @membership.interest_id %>">
+  </div>
+
+  <button>
+    Create membership
+  </button>
+</form>
+
+<hr>
+
+<a href="/memberships">
+  Go back
+</a>

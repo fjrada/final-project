@@ -1,0 +1,74 @@
+<h1>
+  Category list
+</h1>
+
+<a href="/new_category_form">
+  Add a new category
+</a>
+
+<hr>
+
+<table>
+  <tr>
+    <th>
+      ID
+    </th>
+
+    <th>
+      Name
+    </th>
+
+    <th>
+      Frequency
+    </th>
+
+    <th>
+      User
+    </th>
+
+    <th>
+      Created at
+    </th>
+
+    <th>
+      Updated at
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @categories.each do |category| %>
+  <tr>
+    <td>
+      <%= category.id %>
+    </td>
+
+    <td>
+      <%= category.name %>
+    </td>
+
+    <td>
+      <%= category.frequency %>
+    </td>
+
+    <td>
+      <%= category.user_id %>
+    </td>
+
+    <td>
+      <%= time_ago_in_words(category.created_at) %> ago
+    </td>
+
+    <td>
+      <%= time_ago_in_words(category.updated_at) %> ago
+    </td>
+
+    <td>
+      <a href="/categories/<%= category.id %>">
+        Show details
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>

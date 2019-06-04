@@ -1,0 +1,111 @@
+<h1>
+  <%= @contact.name %> <%= @contact.last_name %> AKA "<%= @contact.nickname %>"
+</h1>
+
+<h2>Details</h2>
+
+<dl>
+  <dt>
+    City
+  </dt>
+  <dd>
+    <%= @contact.city %>
+  </dd>
+
+  <dt>
+    Job
+  </dt>
+  <dd>
+    <%= @contact.job %>
+  </dd>
+
+  <dt>
+    Birthday
+  </dt>
+  <dd>
+    <%= @contact.birthday %>
+  </dd>
+
+  <dt>
+    Note
+  </dt>
+  <dd>
+    <%= @contact.note %>
+  </dd>
+
+  <dt>
+    Country of origin
+  </dt>
+  <dd>
+    <%= @contact.country_of_origin %>
+  </dd>
+
+  <dt>
+    Category
+  </dt>
+  <dd>
+    <%= @contact.category_id %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@contact.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@contact.updated_at) %> ago
+  </dd>
+
+</dl>
+
+<h2>Interactions</h2>
+
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Details</th>
+  </tr>
+
+  <#% @interactions.where({:contact_id => @contact.id}).each do |interaction| %>
+
+  <tr>
+    <td>
+      <#%= interaction.date %>
+    </td>
+    <td>
+      <#%= interaction.details %>
+    </td>
+  </tr>
+  <#% end %>
+</table>
+
+<div>
+  <div>
+    <a href="/contacts">
+      Go back
+    </a>
+  </div>
+
+  <div>
+    <a href="/existing_contact_form/<%= @contact.id %>">
+      Edit contact
+    </a>
+  </div>
+
+  <div>
+    <a href="/delete_contact/<%= @contact.id %>">
+      Delete contact
+    </a>
+  </div>
+</div>
+
+
+<br>
+<#%= @contact.main_contact %>
+<br>
+Contact #<%= @contact.id %> details

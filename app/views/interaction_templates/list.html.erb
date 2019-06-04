@@ -1,0 +1,74 @@
+<h1>
+  Interaction list
+</h1>
+
+<a href="/new_interaction_form">
+  Add a new interaction
+</a>
+
+<hr>
+
+<table>
+  <tr>
+    <th>
+      ID
+    </th>
+
+    <th>
+      Contact
+    </th>
+
+    <th>
+      Details
+    </th>
+
+    <th>
+      Date
+    </th>
+
+    <th>
+      Created at
+    </th>
+
+    <th>
+      Updated at
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @interactions.each do |interaction| %>
+  <tr>
+    <td>
+      <%= interaction.id %>
+    </td>
+
+    <td>
+      <%= interaction.contact_id %>
+    </td>
+
+    <td>
+      <%= interaction.details %>
+    </td>
+
+    <td>
+      <%= interaction.date %>
+    </td>
+
+    <td>
+      <%= time_ago_in_words(interaction.created_at) %> ago
+    </td>
+
+    <td>
+      <%= time_ago_in_words(interaction.updated_at) %> ago
+    </td>
+
+    <td>
+      <a href="/interactions/<%= interaction.id %>">
+        Show details
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>

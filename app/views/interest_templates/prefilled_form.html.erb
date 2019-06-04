@@ -1,0 +1,35 @@
+<h1>
+  Edit interest #<%= @interest.id %>
+</h1>
+
+<hr>
+
+<%= render("interest_templates/validation_failures.html.erb") %>
+
+<form action="/update_interest_record/<%= @interest.id %>" method="post">
+  <div>
+    <label for="name">
+      Name
+    </label>
+
+    <input type="text" id="name" name="name" value="<%= @interest.name %>">
+  </div>
+
+  <div>
+    <label for="user_id">
+      User
+    </label>
+
+    <input type="text" id="user_id" name="user_id" value="<%= @interest.user_id %>">
+  </div>
+
+  <button>
+    Update interest
+  </button>
+</form>
+
+<hr>
+
+<a href="/interests">
+  Go back
+</a>

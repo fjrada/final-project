@@ -1,0 +1,43 @@
+<h1>
+  Add a new interaction
+</h1>
+
+<hr>
+
+<%= render("interaction_templates/validation_failures.html.erb") %>
+
+<form action="/insert_interaction_record" method="post">
+  <div>
+    <label for="contact_id">
+      Contact
+    </label>
+
+    <input type="text" id="contact_id" name="contact_id" value="<%= @interaction.contact_id %>">
+  </div>
+
+  <div>
+    <label for="details">
+      Details
+    </label>
+
+    <textarea id="details" name="details"><%= @interaction.details %></textarea>
+  </div>
+
+  <div>
+    <label for="date">
+      Date
+    </label>
+
+    <input type="text" id="date" name="date" value="<%= @interaction.date %>">
+  </div>
+
+  <button>
+    Create interaction
+  </button>
+</form>
+
+<hr>
+
+<a href="/interactions">
+  Go back
+</a>

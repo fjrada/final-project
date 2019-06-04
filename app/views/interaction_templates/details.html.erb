@@ -1,0 +1,61 @@
+<h1>
+  Interaction #<%= @interaction.id %> details
+</h1>
+
+<div>
+  <div>
+    <a href="/interactions">
+      Go back
+    </a>
+  </div>
+
+  <div>
+    <a href="/existing_interaction_form/<%= @interaction.id %>">
+      Edit interaction
+    </a>
+  </div>
+
+  <div>
+    <a href="/delete_interaction/<%= @interaction.id %>">
+      Delete interaction
+    </a>
+  </div>
+</div>
+
+<dl>
+  <dt>
+    Contact
+  </dt>
+  <dd>
+    <%= @interaction.contact_id %>
+  </dd>
+
+  <dt>
+    Details
+  </dt>
+  <dd>
+    <%= @interaction.details %>
+  </dd>
+
+  <dt>
+    Date
+  </dt>
+  <dd>
+    <%= @interaction.date %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@interaction.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@interaction.updated_at) %> ago
+  </dd>
+</dl>
+

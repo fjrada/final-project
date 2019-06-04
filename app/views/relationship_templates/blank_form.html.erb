@@ -1,0 +1,43 @@
+<h1>
+  Add a new relationship
+</h1>
+
+<hr>
+
+<%= render("relationship_templates/validation_failures.html.erb") %>
+
+<form action="/insert_relationship_record" method="post">
+  <div>
+    <label for="owner_id">
+      Owner
+    </label>
+
+    <input type="text" id="owner_id" name="owner_id" value="<%= @relationship.owner_id %>">
+  </div>
+
+  <div>
+    <label for="relative_id">
+      Relative
+    </label>
+
+    <input type="text" id="relative_id" name="relative_id" value="<%= @relationship.relative_id %>">
+  </div>
+
+  <div>
+    <label for="nature">
+      Nature
+    </label>
+
+    <input type="text" id="nature" name="nature" value="<%= @relationship.nature %>">
+  </div>
+
+  <button>
+    Create relationship
+  </button>
+</form>
+
+<hr>
+
+<a href="/relationships">
+  Go back
+</a>

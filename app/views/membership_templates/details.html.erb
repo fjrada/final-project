@@ -1,0 +1,54 @@
+<h1>
+  Membership #<%= @membership.id %> details
+</h1>
+
+<div>
+  <div>
+    <a href="/memberships">
+      Go back
+    </a>
+  </div>
+
+  <div>
+    <a href="/existing_membership_form/<%= @membership.id %>">
+      Edit membership
+    </a>
+  </div>
+
+  <div>
+    <a href="/delete_membership/<%= @membership.id %>">
+      Delete membership
+    </a>
+  </div>
+</div>
+
+<dl>
+  <dt>
+    Contact
+  </dt>
+  <dd>
+    <%= @membership.contact_id %>
+  </dd>
+
+  <dt>
+    Interest
+  </dt>
+  <dd>
+    <%= @membership.interest_id %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@membership.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@membership.updated_at) %> ago
+  </dd>
+</dl>
+

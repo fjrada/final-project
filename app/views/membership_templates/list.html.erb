@@ -1,0 +1,66 @@
+<h1>
+  Membership list
+</h1>
+
+<a href="/new_membership_form">
+  Add a new membership
+</a>
+
+<hr>
+
+<table>
+  <tr>
+    <th>
+      ID
+    </th>
+
+    <th>
+      Contact
+    </th>
+
+    <th>
+      Interest
+    </th>
+
+    <th>
+      Created at
+    </th>
+
+    <th>
+      Updated at
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @memberships.each do |membership| %>
+  <tr>
+    <td>
+      <%= membership.id %>
+    </td>
+
+    <td>
+      <%= membership.contact_id %>
+    </td>
+
+    <td>
+      <%= membership.interest_id %>
+    </td>
+
+    <td>
+      <%= time_ago_in_words(membership.created_at) %> ago
+    </td>
+
+    <td>
+      <%= time_ago_in_words(membership.updated_at) %> ago
+    </td>
+
+    <td>
+      <a href="/memberships/<%= membership.id %>">
+        Show details
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>

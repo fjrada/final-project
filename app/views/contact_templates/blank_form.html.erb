@@ -1,0 +1,107 @@
+<h1>
+  Add a new contact
+</h1>
+
+<hr>
+
+<%= render("contact_templates/validation_failures.html.erb") %>
+
+<form action="/insert_contact_record" method="post">
+  <div>
+    <label for="user_id">
+      User
+    </label>
+
+    <input type="text" id="user_id" name="user_id" value="<%= @contact.user_id %>">
+  </div>
+
+  <div>
+    <label for="main_contact">
+      Main contact
+    </label>
+
+    <input type="text" id="main_contact" name="main_contact" value="<%= @contact.main_contact %>">
+  </div>
+
+  <div>
+    <label for="city">
+      City
+    </label>
+
+    <input type="text" id="city" name="city" value="<%= @contact.city %>">
+  </div>
+
+  <div>
+    <label for="job">
+      Job
+    </label>
+
+    <input type="text" id="job" name="job" value="<%= @contact.job %>">
+  </div>
+
+  <div>
+    <label for="birthday">
+      Birthday
+    </label>
+
+    <input type="text" id="birthday" name="birthday" value="<%= @contact.birthday %>">
+  </div>
+
+  <div>
+    <label for="note">
+      Note
+    </label>
+
+    <textarea id="note" name="note"><%= @contact.note %></textarea>
+  </div>
+
+  <div>
+    <label for="name">
+      Name
+    </label>
+
+    <input type="text" id="name" name="name" value="<%= @contact.name %>">
+  </div>
+
+  <div>
+    <label for="last_name">
+      Last name
+    </label>
+
+    <input type="text" id="last_name" name="last_name" value="<%= @contact.last_name %>">
+  </div>
+
+  <div>
+    <label for="nickname">
+      Nickname
+    </label>
+
+    <input type="text" id="nickname" name="nickname" value="<%= @contact.nickname %>">
+  </div>
+
+  <div>
+    <label for="country_of_origin">
+      Country of origin
+    </label>
+
+    <input type="text" id="country_of_origin" name="country_of_origin" value="<%= @contact.country_of_origin %>">
+  </div>
+
+  <div>
+    <label for="category_id">
+      Category
+    </label>
+
+    <input type="text" id="category_id" name="category_id" value="<%= @contact.category_id %>">
+  </div>
+
+  <button>
+    Create contact
+  </button>
+</form>
+
+<hr>
+
+<a href="/contacts">
+  Go back
+</a>

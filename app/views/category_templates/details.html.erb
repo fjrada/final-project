@@ -1,0 +1,61 @@
+<h1>
+  Category #<%= @category.id %> details
+</h1>
+
+<div>
+  <div>
+    <a href="/categories">
+      Go back
+    </a>
+  </div>
+
+  <div>
+    <a href="/existing_category_form/<%= @category.id %>">
+      Edit category
+    </a>
+  </div>
+
+  <div>
+    <a href="/delete_category/<%= @category.id %>">
+      Delete category
+    </a>
+  </div>
+</div>
+
+<dl>
+  <dt>
+    Name
+  </dt>
+  <dd>
+    <%= @category.name %>
+  </dd>
+
+  <dt>
+    Frequency
+  </dt>
+  <dd>
+    <%= @category.frequency %>
+  </dd>
+
+  <dt>
+    User
+  </dt>
+  <dd>
+    <%= @category.user_id %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@category.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@category.updated_at) %> ago
+  </dd>
+</dl>
+
