@@ -7,12 +7,16 @@ class InterestsController < ApplicationController
 
   def details
     @interest = Interest.where({ :id => params.fetch("id_to_display") }).first
-
+    
+    @contacts = Contact.where({ :id => Membership.where({ :interest_id => params.fetch("id_to_display")}).pluck(:contact_id)})
+    
+    
     render("interest_templates/details.html.erb")
   end
 
   def blank_form
     @interest = Interest.new
+    @membership = Membership.new
 
     render("interest_templates/blank_form.html.erb")
   end
@@ -25,6 +29,13 @@ class InterestsController < ApplicationController
 
     if @interest.valid?
       @interest.save
+      
+    @membership = Membership.new
+
+    @membership.contact_id = params.fetch("contact_id")
+    @membership.interest_id = @interest.id
+
+    @membership.save
 
       redirect_to("/interests", { :notice => "Interest created successfully." })
     else

@@ -1,34 +1,14 @@
+<!DOCTYPE html>
+
+<head>
+  <title>Interests: <%= @interest.name %></title>
+</head>
+
 <h1>
-  Interest #<%= @interest.id %> details
+  <%= @interest.name %>
 </h1>
 
-<div>
-  <div>
-    <a href="/interests">
-      Go back
-    </a>
-  </div>
-
-  <div>
-    <a href="/existing_interest_form/<%= @interest.id %>">
-      Edit interest
-    </a>
-  </div>
-
-  <div>
-    <a href="/delete_interest/<%= @interest.id %>">
-      Delete interest
-    </a>
-  </div>
-</div>
-
 <dl>
-  <dt>
-    Name
-  </dt>
-  <dd>
-    <%= @interest.name %>
-  </dd>
 
   <dt>
     User
@@ -52,3 +32,58 @@
   </dd>
 </dl>
 
+
+
+
+<div>
+  <div>
+    <a href="/interests">
+      Go back
+    </a>
+  </div>
+
+  <div>
+    <a href="/existing_interest_form/<%= @interest.id %>">
+      Edit interest
+    </a>
+  </div>
+
+  <div>
+    <a href="/delete_interest/<%= @interest.id %>">
+      Delete interest
+    </a>
+  </div>
+</div>
+
+
+
+
+
+
+
+<table>
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Nickname</th>
+    <th>City</th>
+  </tr>
+
+  <% @contacts.order({ :last_name => :desc }).each do |contact| %>
+
+  <tr>
+    <td>
+      <%= contact.name %>
+    </td>
+    <td>
+      <%= contact.last_name %>
+    </td>
+    <td>
+      <%= contact.nickname %>
+    </td>
+    <td>
+      <%= contact.city %>
+    </td>
+  </tr>
+  <% end %>
+</table>
