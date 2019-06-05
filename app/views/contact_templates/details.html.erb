@@ -48,6 +48,20 @@
   </dd>
 
   <dt>
+    Interest
+  </dt>
+
+  <dd>
+    <% @interests.each do |interest| %>
+    
+    <%= interest.name %>, 
+    <% end %>
+    <a href="/new_interest_form">
+      add a new interest
+    </a>
+  </dd>
+
+  <dt>
     Created at
   </dt>
   <dd>
@@ -65,23 +79,27 @@
 
 <h2>Interactions</h2>
 
+<a href="/new_interaction_form">
+  Add a new interaction
+</a>
+
 <table>
   <tr>
     <th>Date</th>
     <th>Details</th>
   </tr>
 
-  <#% @interactions.where({:contact_id => @contact.id}).each do |interaction| %>
+  <% @interactions.order({ :date => :desc }).each do |interaction| %>
 
   <tr>
     <td>
-      <#%= interaction.date %>
+      <%= interaction.date %>
     </td>
     <td>
-      <#%= interaction.details %>
+      <%= interaction.details %>
     </td>
   </tr>
-  <#% end %>
+  <% end %>
 </table>
 
 <div>

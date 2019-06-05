@@ -7,7 +7,9 @@ class ContactsController < ApplicationController
 
   def details
     @contact = Contact.where({ :id => params.fetch("id_to_display") }).first
-
+    @interactions = Interaction.all.where({ :contact_id => params.fetch("id_to_display")})
+    @interests = Interest.all.where({:id => Membership.where({ :contact_id => params.fetch("id_to_display")}).pluck(:interest_id)})
+    
     render("contact_templates/details.html.erb")
   end
 
@@ -78,4 +80,5 @@ class ContactsController < ApplicationController
 
     redirect_to("/contacts", { :notice => "Contact deleted successfully." })
   end
+  
 end
