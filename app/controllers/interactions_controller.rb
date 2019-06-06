@@ -13,6 +13,7 @@ class InteractionsController < ApplicationController
 
   def blank_form
     @interaction = Interaction.new
+    @contact = Contact.where({ :id => params.fetch("contact_id")}).first
 
     render("interaction_templates/blank_form.html.erb")
   end
@@ -20,14 +21,17 @@ class InteractionsController < ApplicationController
   def save_new_info
     @interaction = Interaction.new
 
-    @interaction.contact_id = params.fetch("contact_id")
+    @contact = Contact.where({ :id => params.fetch("contact_id")}).first
+
+
+    @interaction.contact_id = @contact.id
     @interaction.details = params.fetch("details")
     @interaction.date = params.fetch("date")
 
     if @interaction.valid?
       @interaction.save
 
-      redirect_to("/interactions", { :notice => "Interaction created successfully." })
+      redirect_to("/contacts/" + @contact.id.to_s, { :notice => "Interaction created successfully." })
     else
       render("interaction_templates/blank_form.html.erb")
     end
@@ -35,21 +39,23 @@ class InteractionsController < ApplicationController
 
   def prefilled_form
     @interaction = Interaction.where({ :id => params.fetch("id_to_prefill") }).first
-
+    @contact = Contact.where({ :id => @interaction.contact_id}).first
+    
     render("interaction_templates/prefilled_form.html.erb")
   end
 
   def save_edits
     @interaction = Interaction.where({ :id => params.fetch("id_to_modify") }).first
 
-    @interaction.contact_id = params.fetch("contact_id")
     @interaction.details = params.fetch("details")
     @interaction.date = params.fetch("date")
-
+    
+    @contact = Contact.where({ :id => @interaction.contact_id}).first
+    
     if @interaction.valid?
       @interaction.save
 
-      redirect_to("/interactions/" + @interaction.id.to_s, { :notice => "Interaction updated successfully." })
+      redirect_to("/contacts/" + @contact.id.to_s, { :notice => "Interaction updated successfully." })
     else
       render("interaction_templates/prefilled_form.html.erb")
     end

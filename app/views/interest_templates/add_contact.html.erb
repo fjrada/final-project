@@ -1,0 +1,56 @@
+<head>
+  <title>Contact to Interest</title>
+</head>
+
+<a href="/contacts">
+  Contacts
+</a>
+<br>
+<a href="/interests">
+  Interests
+</a>
+<br>
+<a href="/new_contact_form">
+  Add a new contact
+</a>
+<br>
+<a href="/new_interest_form">
+  Add a new interest
+</a>
+
+
+<h1>
+  Add a contact to interest
+</h1>
+
+<hr>
+
+<%= render("interest_templates/validation_failures.html.erb") %>
+
+<form action="/add_contact_to_interest/<%= @interest.id %>" method="post">
+
+    <div>
+          <label for="contact_id">Contact</label>
+          <input list="contacts" id="contact_id" name="contact_id">
+          <datalist id="contacts">
+              
+              <% @contacts.each do |contact| %>
+              
+            <option value="<%= contact.id %>"><%= contact.name %> <%= contact.last_name %></option>
+            <% end %>
+          </datalist>
+    </div>
+    
+  <button>
+    Add contact to interest
+  </button>
+</form>
+
+<hr>
+
+<a href="/interests">
+  Go back to interests
+</a>
+<a href="/contacts">
+  Go back to contacts
+</a>

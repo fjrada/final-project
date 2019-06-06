@@ -71,4 +71,20 @@ class InterestsController < ApplicationController
 
     redirect_to("/interests", { :notice => "Interest deleted successfully." })
   end
+  
+  def add_contact_to_interest
+    
+    @interest = Interest.where({ :id => params.fetch("interest_id") }).first
+    
+    @contacts = Contact.all
+    
+    @membership = Membership.new
+
+    @membership.contact_id = params.fetch("contact_id")
+    @membership.interest_id = @interest.id
+
+    @membership.save
+
+    redirect_to("/interests", { :notice => "Contact added successfully." })
+  end
 end

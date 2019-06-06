@@ -1,3 +1,25 @@
+<head>
+  <title>Contact List</title>
+</head>
+
+
+<a href="/contacts">
+  Contacts
+</a>
+<br>
+<a href="/interests">
+  Interests
+</a>
+<br>
+<a href="/new_contact_form">
+  Add a new contact
+</a>
+<br>
+<a href="/new_interest_form">
+  Add a new interest
+</a>
+
+
 <h1>
   Contact list
 </h1>
@@ -23,6 +45,18 @@
     </th>
 
     <th>
+      Name
+    </th>
+
+    <th>
+      Last name
+    </th>
+
+    <th>
+      Nickname
+    </th>
+
+    <th>
       City
     </th>
 
@@ -36,18 +70,6 @@
 
     <th>
       Note
-    </th>
-
-    <th>
-      Name
-    </th>
-
-    <th>
-      Last name
-    </th>
-
-    <th>
-      Nickname
     </th>
 
     <th>
@@ -85,6 +107,18 @@
     </td>
 
     <td>
+      <%= contact.name %>
+    </td>
+
+    <td>
+      <%= contact.last_name %>
+    </td>
+
+    <td>
+      <%= contact.nickname %>
+    </td>
+
+    <td>
       <%= contact.city %>
     </td>
 
@@ -98,18 +132,6 @@
 
     <td>
       <%= contact.note %>
-    </td>
-
-    <td>
-      <%= contact.name %>
-    </td>
-
-    <td>
-      <%= contact.last_name %>
-    </td>
-
-    <td>
-      <%= contact.nickname %>
     </td>
 
     <td>

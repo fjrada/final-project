@@ -1,8 +1,24 @@
-<!DOCTYPE html>
-
 <head>
-  <title>Interests: <%= @interest.name %></title>
+  <title><%= @interest.name %></title>
 </head>
+
+
+<a href="/contacts">
+  Contacts
+</a>
+<br>
+<a href="/interests">
+  Interests
+</a>
+<br>
+<a href="/new_contact_form">
+  Add a new contact
+</a>
+<br>
+<a href="/new_interest_form">
+  Add a new interest
+</a>
+
 
 <h1>
   <%= @interest.name %>
@@ -36,11 +52,6 @@
 
 
 <div>
-  <div>
-    <a href="/interests">
-      Go back
-    </a>
-  </div>
 
   <div>
     <a href="/existing_interest_form/<%= @interest.id %>">
@@ -67,6 +78,7 @@
     <th>Last Name</th>
     <th>Nickname</th>
     <th>City</th>
+    <th>Details</th>
   </tr>
 
   <% @contacts.order({ :last_name => :desc }).each do |contact| %>
@@ -83,6 +95,9 @@
     </td>
     <td>
       <%= contact.city %>
+    </td>
+    <td>
+      <a href="/contacts/<%= contact.id %>">Show details</a>
     </td>
   </tr>
   <% end %>

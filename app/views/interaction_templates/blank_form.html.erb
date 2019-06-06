@@ -1,19 +1,35 @@
+<head>
+  <title>New Interaction | <%= @contact.name %> <%= @contact.last_name %></title>
+</head>
+
+
+<a href="/contacts">
+  Contacts
+</a>
+<br>
+<a href="/interests">
+  Interests
+</a>
+<br>
+<a href="/new_contact_form">
+  Add a new contact
+</a>
+<br>
+<a href="/new_interest_form">
+  Add a new interest
+</a>
+
+
 <h1>
-  Add a new interaction
+  Add a new interaction - <%= @contact.name %> <%= @contact.last_name %>
 </h1>
+
 
 <hr>
 
 <%= render("interaction_templates/validation_failures.html.erb") %>
 
-<form action="/insert_interaction_record" method="post">
-  <div>
-    <label for="contact_id">
-      Contact
-    </label>
-
-    <input type="text" id="contact_id" name="contact_id" value="<%= @interaction.contact_id %>">
-  </div>
+<form action="/insert_interaction_record/<%= @contact.id %>" method="post">
 
   <div>
     <label for="details">
@@ -38,6 +54,6 @@
 
 <hr>
 
-<a href="/interactions">
+<a href="/contacts/<%= @contact.id %>">
   Go back
 </a>

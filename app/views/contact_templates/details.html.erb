@@ -1,3 +1,25 @@
+<head>
+  <title><%= @contact.name %> <%= @contact.last_name %></title>
+</head>
+
+
+<a href="/contacts">
+  Contacts
+</a>
+<br>
+<a href="/interests">
+  Interests
+</a>
+<br>
+<a href="/new_contact_form">
+  Add a new contact
+</a>
+<br>
+<a href="/new_interest_form">
+  Add a new interest
+</a>
+
+
 <h1>
   <%= @contact.name %> <%= @contact.last_name %> AKA "<%= @contact.nickname %>"
 </h1>
@@ -54,7 +76,7 @@
   <dd>
     <% @interests.each do |interest| %>
     
-    <%= interest.name %>, 
+    <a href="/interests/<%= interest.id %>"><%= interest.name %></a>, 
     <% end %>
     <a href="/new_interest_form">
       add a new interest
@@ -79,7 +101,7 @@
 
 <h2>Interactions</h2>
 
-<a href="/new_interaction_form">
+<a href="/new_interaction_form/<%= @contact.id %>">
   Add a new interaction
 </a>
 
@@ -87,6 +109,7 @@
   <tr>
     <th>Date</th>
     <th>Details</th>
+    <th></th>
   </tr>
 
   <% @interactions.order({ :date => :desc }).each do |interaction| %>
@@ -98,16 +121,14 @@
     <td>
       <%= interaction.details %>
     </td>
+    <td>
+      <a href="/existing_interaction_form/<%= interaction.id %>">Edit</a>
+    </td>
   </tr>
   <% end %>
 </table>
 
 <div>
-  <div>
-    <a href="/contacts">
-      Go back
-    </a>
-  </div>
 
   <div>
     <a href="/existing_contact_form/<%= @contact.id %>">
