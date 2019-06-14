@@ -3,23 +3,6 @@
 </head>
 
 
-<a href="/contacts">
-  Contacts
-</a>
-<br>
-<a href="/interests">
-  Interests
-</a>
-<br>
-<a href="/new_contact_form">
-  Add a new contact
-</a>
-<br>
-<a href="/new_interest_form">
-  Add a new interest
-</a>
-
-
 <h1>
   Interest list
 </h1>
@@ -30,52 +13,24 @@
 
 <hr>
 
-<table>
+<table class="table">
+  <thead class="thead-dark">
   <tr>
-    <th>
-      ID
-    </th>
 
     <th>
       Name
     </th>
 
     <th>
-      User
-    </th>
-
-    <th>
-      Created at
-    </th>
-
-    <th>
-      Updated at
-    </th>
-
-    <th>
+      Details
     </th>
   </tr>
-
+  </thead>
   <% @interests.each do |interest| %>
   <tr>
-    <td>
-      <%= interest.id %>
-    </td>
 
     <td>
       <%= interest.name %>
-    </td>
-
-    <td>
-      <%= interest.user_id %>
-    </td>
-
-    <td>
-      <%= time_ago_in_words(interest.created_at) %> ago
-    </td>
-
-    <td>
-      <%= time_ago_in_words(interest.updated_at) %> ago
     </td>
 
     <td>
@@ -86,3 +41,5 @@
   </tr>
   <% end %>
 </table>
+
+<%= @interests.count %>

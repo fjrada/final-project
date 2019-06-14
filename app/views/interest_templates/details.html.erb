@@ -3,73 +3,15 @@
 </head>
 
 
-<a href="/contacts">
-  Contacts
-</a>
-<br>
-<a href="/interests">
-  Interests
-</a>
-<br>
-<a href="/new_contact_form">
-  Add a new contact
-</a>
-<br>
-<a href="/new_interest_form">
-  Add a new interest
-</a>
-
-
 <h1>
   <%= @interest.name %>
 </h1>
 
-<dl>
+<br>
 
-  <dt>
-    User
-  </dt>
-  <dd>
-    <%= @interest.user_id %>
-  </dd>
-
-  <dt>
-    Created at
-  </dt>
-  <dd>
-    <%= time_ago_in_words(@interest.created_at) %> ago
-  </dd>
-
-  <dt>
-    Updated at
-  </dt>
-  <dd>
-    <%= time_ago_in_words(@interest.updated_at) %> ago
-  </dd>
-</dl>
-
-
-
+<h2>Contacts interested in <%= @interest.name %></h2>
 
 <div>
-
-  <div>
-    <a href="/existing_interest_form/<%= @interest.id %>">
-      Edit interest
-    </a>
-  </div>
-
-  <div>
-    <a href="/delete_interest/<%= @interest.id %>">
-      Delete interest
-    </a>
-  </div>
-</div>
-
-
-
-
-
 
 
 <table>
@@ -79,6 +21,7 @@
     <th>Nickname</th>
     <th>City</th>
     <th>Details</th>
+    <th>Remove Contact</th>
   </tr>
 
   <% @contacts.order({ :last_name => :desc }).each do |contact| %>
@@ -99,6 +42,24 @@
     <td>
       <a href="/contacts/<%= contact.id %>">Show details</a>
     </td>
+    <td>
+      <a href="/delete_membership/<%= @memberships.where({ :contact_id => contact.id}).first.id %>">Remove</a>
+    </td>
   </tr>
   <% end %>
 </table>
+
+<a href="/add_contact_to_interest/<%= @interest.id %>">Add a contact</a>
+  <div>
+    <a href="/existing_interest_form/<%= @interest.id %>">
+      Change interest name
+    </a>
+  </div>
+
+  <div>
+    <a href="/delete_interest/<%= @interest.id %>">
+      Delete interest
+    </a>
+  </div>
+</div>
+

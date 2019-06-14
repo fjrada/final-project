@@ -3,74 +3,58 @@
 </head>
 
 
-<a href="/contacts">
-  Contacts
-</a>
-<br>
-<a href="/interests">
-  Interests
-</a>
-<br>
-<a href="/new_contact_form">
-  Add a new contact
-</a>
-<br>
-<a href="/new_interest_form">
-  Add a new interest
-</a>
-
-
 <h1>
-  <%= @contact.name %> <%= @contact.last_name %> AKA "<%= @contact.nickname %>"
+  <%= @contact.name %> <%= @contact.last_name %><% if @contact.nickname.empty?%><%else%>
+  
+  AKA "<%= @contact.nickname %>"<%end%>
 </h1>
+
+<hr>
 
 <h2>Details</h2>
 
 <dl>
+  <% if @contact.city.empty?%><%else%>
   <dt>
     City
   </dt>
   <dd>
     <%= @contact.city %>
-  </dd>
+  </dd><%end%>
 
+  <% if @contact.job.empty?%><%else%>
   <dt>
     Job
   </dt>
   <dd>
     <%= @contact.job %>
-  </dd>
+  </dd><%end%>
 
   <dt>
     Birthday
   </dt>
   <dd>
-    <%= @contact.birthday %>
+    <%= @contact.birthday.month %>/<%= @contact.birthday.day %>/<%= @contact.birthday.year %>
   </dd>
 
+  <% if @contact.note.empty?%><%else%>
   <dt>
-    Note
+    Notes
   </dt>
   <dd>
     <%= @contact.note %>
-  </dd>
+  </dd><%end%>
 
+  <% if @contact.country_of_origin.empty?%><%else%>
   <dt>
     Country of origin
   </dt>
   <dd>
     <%= @contact.country_of_origin %>
-  </dd>
+  </dd><%end%>
 
   <dt>
-    Category
-  </dt>
-  <dd>
-    <%= @contact.category_id %>
-  </dd>
-
-  <dt>
-    Interest
+    Interests
   </dt>
 
   <dd>
@@ -78,26 +62,14 @@
     
     <a href="/interests/<%= interest.id %>"><%= interest.name %></a>, 
     <% end %>
-    <a href="/new_interest_form">
+    <a href="/add_interest_to_contact/<%= @contact.id %>">
       add a new interest
     </a>
   </dd>
 
-  <dt>
-    Created at
-  </dt>
-  <dd>
-    <%= time_ago_in_words(@contact.created_at) %> ago
-  </dd>
-
-  <dt>
-    Updated at
-  </dt>
-  <dd>
-    <%= time_ago_in_words(@contact.updated_at) %> ago
-  </dd>
-
 </dl>
+
+<hr>
 
 <h2>Interactions</h2>
 
@@ -105,18 +77,21 @@
   Add a new interaction
 </a>
 
-<table>
+  <% if @interactions.empty?%><%else%>
+<table class="table">
+  <thead class="thead-dark">
   <tr>
     <th>Date</th>
     <th>Details</th>
     <th></th>
   </tr>
+  </thead>
 
   <% @interactions.order({ :date => :desc }).each do |interaction| %>
 
   <tr>
     <td>
-      <%= interaction.date %>
+      <%= interaction.date.month %>/<%= interaction.date.day %>/<%= interaction.date.year %>
     </td>
     <td>
       <%= interaction.details %>
@@ -127,6 +102,9 @@
   </tr>
   <% end %>
 </table>
+  <% end %>
+
+<hr>
 
 <div>
 
@@ -143,8 +121,4 @@
   </div>
 </div>
 
-
 <br>
-<#%= @contact.main_contact %>
-<br>
-Contact #<%= @contact.id %> details

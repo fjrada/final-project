@@ -31,7 +31,10 @@ Rails.application.routes.draw do
   # UPDATE
   match("/existing_interest_form/:id_to_prefill", { :controller => "interests", :action => "prefilled_form", :via => "get" })
   match("/update_interest_record/:id_to_modify", { :controller => "interests", :action => "save_edits", :via => "post" })
+  
   match("/add_contact_to_interest/:interest_id", { :controller => "interests", :action => "add_contact_to_interest", :via => "get"})
+  match("/insert_contact_to_interest/:interest_id", { :controller => "interests", :action => "insert_contact_to_interest", :via => "post"})
+
 
   # DELETE
   match("/delete_interest/:id_to_remove", { :controller => "interests", :action => "remove_row", :via => "get" })
@@ -109,8 +112,18 @@ Rails.application.routes.draw do
   match("/existing_contact_form/:id_to_prefill", { :controller => "contacts", :action => "prefilled_form", :via => "get" })
   match("/update_contact_record/:id_to_modify", { :controller => "contacts", :action => "save_edits", :via => "post" })
 
+  match("/add_interest_to_contact/:contact_id", { :controller => "contacts", :action => "add_interest_to_contact", :via => "get"})
+  match("/insert_interest_to_contact/:contact_id", { :controller => "contacts", :action => "insert_interest_to_contact", :via => "post"})
+
+
   # DELETE
   match("/delete_contact/:id_to_remove", { :controller => "contacts", :action => "remove_row", :via => "get" })
+
+  #------------------------------
+
+  # Routes for the Navigation resource:
+
+  match("/", { :controller => "navigation", :action => "home", :via => "get" })
 
   #------------------------------
 

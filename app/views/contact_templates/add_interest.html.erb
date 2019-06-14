@@ -1,0 +1,37 @@
+<head>
+  <title>Interest to Contact</title>
+</head>
+
+
+<h1>
+  Add an existing interest to <%= @contact.name %> <%= @contact.last_name %>
+</h1>
+
+<hr>
+
+<%= render("contact_templates/validation_failures.html.erb") %>
+
+<form action="/insert_interest_to_contact/<%= @contact.id %>" method="post">
+
+  <div>
+    <label for="interest_id">Interest</label>
+    <input list="interests" id="interest_id" name="interest_id" required>
+    <datalist id="interests">
+      
+      <% @interests.where({ :user_id => current_user.id}).each do |interest| %>
+        <option value="<%= interest.id %>" type="hidden"><%= interest.name %></option>
+      <% end %>
+    </datalist>
+  </div>
+
+<br>    
+  <button class="btn btn-dark">
+    Add interest to contact
+  </button>
+</form>
+
+<hr>
+
+<div>
+  <a href="/contacts/<%= @contact.id %>">Go back to <%= @contact.name %> <%= @contact.last_name %></a>
+</div>

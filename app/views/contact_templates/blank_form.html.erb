@@ -2,24 +2,6 @@
   <title>New Contact</title>
 </head>
 
-
-<a href="/contacts">
-  Contacts
-</a>
-<br>
-<a href="/interests">
-  Interests
-</a>
-<br>
-<a href="/new_contact_form">
-  Add a new contact
-</a>
-<br>
-<a href="/new_interest_form">
-  Add a new interest
-</a>
-
-
 <h1>
   Add a new contact
 </h1>
@@ -30,20 +12,41 @@
 
 <form action="/insert_contact_record" method="post">
   <div>
-    <label for="user_id">
-      User
-    </label>
-
-    <input type="text" id="user_id" name="user_id" value="<%= @contact.user_id %>">
+    <input type="hidden" id="user_id" name="user_id" value="<%= current_user.id %>">
   </div>
 
   <div>
-    <label for="main_contact">
-      Main contact
+    <label for="name">
+      Name
     </label>
 
-    <input type="text" id="main_contact" name="main_contact" value="<%= @contact.main_contact %>">
+    <input type="text" id="name" name="name" value="<%= @contact.name %>" required>
   </div>
+
+  <div>
+    <label for="last_name">
+      Last name
+    </label>
+
+    <input type="text" id="last_name" name="last_name" value="<%= @contact.last_name %>" required>
+  </div>
+
+  <div>
+    <label for="nickname">
+      Nickname
+    </label>
+
+    <input type="text" id="nickname" name="nickname" value="<%= @contact.nickname %>">
+  </div>
+
+  <div>
+    <label for="country_of_origin">
+      Country of origin
+    </label>
+
+    <input type="text" id="country_of_origin" name="country_of_origin" value="<%= @contact.country_of_origin %>">
+  </div>
+
 
   <div>
     <label for="city">
@@ -66,7 +69,7 @@
       Birthday
     </label>
 
-    <input type="text" id="birthday" name="birthday" value="<%= @contact.birthday %>">
+    <input type="date" id="birthday" name="birthday" value="<%= @contact.birthday %>" required>
   </div>
 
   <div>
@@ -78,46 +81,14 @@
   </div>
 
   <div>
-    <label for="name">
-      Name
-    </label>
-
-    <input type="text" id="name" name="name" value="<%= @contact.name %>">
-  </div>
-
-  <div>
-    <label for="last_name">
-      Last name
-    </label>
-
-    <input type="text" id="last_name" name="last_name" value="<%= @contact.last_name %>">
-  </div>
-
-  <div>
-    <label for="nickname">
-      Nickname
-    </label>
-
-    <input type="text" id="nickname" name="nickname" value="<%= @contact.nickname %>">
-  </div>
-
-  <div>
-    <label for="country_of_origin">
-      Country of origin
-    </label>
-
-    <input type="text" id="country_of_origin" name="country_of_origin" value="<%= @contact.country_of_origin %>">
-  </div>
-
-  <div>
     <label for="category_id">
       Category
     </label>
 
     <input type="text" id="category_id" name="category_id" value="<%= @contact.category_id %>">
   </div>
-
-  <button>
+<br>
+  <button class="btn btn-dark">
     Create contact
   </button>
 </form>

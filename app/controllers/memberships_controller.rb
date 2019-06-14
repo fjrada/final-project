@@ -58,6 +58,6 @@ class MembershipsController < ApplicationController
 
     @membership.destroy
 
-    redirect_to("/memberships", { :notice => "Membership deleted successfully." })
+    redirect_to("/interests/" + @membership.interest_id.to_s, { :notice => "Membership deleted successfully." })
   end
 end

@@ -3,23 +3,6 @@
 </head>
 
 
-<a href="/contacts">
-  Contacts
-</a>
-<br>
-<a href="/interests">
-  Interests
-</a>
-<br>
-<a href="/new_contact_form">
-  Add a new contact
-</a>
-<br>
-<a href="/new_interest_form">
-  Add a new interest
-</a>
-
-
 <h1>
   Contact list
 </h1>
@@ -30,81 +13,40 @@
 
 <hr>
 
-<table>
-  <tr>
-    <th>
-      ID
-    </th>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
 
-    <th>
-      User
-    </th>
-
-    <th>
-      Main contact
-    </th>
-
-    <th>
-      Name
-    </th>
-
-    <th>
-      Last name
-    </th>
-
-    <th>
-      Nickname
-    </th>
-
-    <th>
-      City
-    </th>
-
-    <th>
-      Job
-    </th>
-
-    <th>
-      Birthday
-    </th>
-
-    <th>
-      Note
-    </th>
-
-    <th>
-      Country of origin
-    </th>
-
-    <th>
-      Category
-    </th>
-
-    <th>
-      Created at
-    </th>
-
-    <th>
-      Updated at
-    </th>
-
-    <th>
-    </th>
-  </tr>
-
+      <th>
+        Name
+      </th>
+  
+      <th>
+        Last name
+      </th>
+  
+      <th>
+        Nickname
+      </th>
+  
+      <th>
+        City
+      </th>
+  
+      <th>
+        Birthday
+      </th>
+  
+      <th>
+        Last interaction
+      </th>
+  
+      <th>
+      </th>
+    </tr>
+  </thead>
   <% @contacts.each do |contact| %>
   <tr>
-    <td>
-      <%= contact.id %>
-    </td>
-
-    <td>
-      <%= contact.user_id %>
-    </td>
-
-    <td>
-      <%= contact.main_contact %>
-    </td>
 
     <td>
       <%= contact.name %>
@@ -123,38 +65,24 @@
     </td>
 
     <td>
-      <%= contact.job %>
-    </td>
-
-    <td>
       <%= contact.birthday %>
     </td>
 
     <td>
-      <%= contact.note %>
+      <%= if Interaction.where({ :contact_id => contact.id}).empty?
+          else
+      
+            Interaction.where({ :contact_id => contact.id}).order({ :date => :desc }).first.date
+      
+          end%>
     </td>
-
-    <td>
-      <%= contact.country_of_origin %>
-    </td>
-
-    <td>
-      <%= contact.category_id %>
-    </td>
-
-    <td>
-      <%= time_ago_in_words(contact.created_at) %> ago
-    </td>
-
-    <td>
-      <%= time_ago_in_words(contact.updated_at) %> ago
-    </td>
-
+    
     <td>
       <a href="/contacts/<%= contact.id %>">
         Show details
       </a>
     </td>
+
   </tr>
   <% end %>
 </table>

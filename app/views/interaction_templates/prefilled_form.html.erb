@@ -3,25 +3,9 @@
 </head>
 
 
-<a href="/contacts">
-  Contacts
-</a>
-<br>
-<a href="/interests">
-  Interests
-</a>
-<br>
-<a href="/new_contact_form">
-  Add a new contact
-</a>
-<br>
-<a href="/new_interest_form">
-  Add a new interest
-</a>
-
 
 <h1>
-  Edit interaction | <%= @contact.name %> <%= @contact.last_name %>
+  Edit interaction with <%= @contact.name %> <%= @contact.last_name %>
 </h1>
 
 <hr>
@@ -35,7 +19,7 @@
       Details
     </label>
 
-    <textarea id="details" name="details" rows="3"><%= @interaction.details %></textarea>
+    <textarea id="details" name="details" rows="3" required><%= @interaction.details %></textarea>
   </div>
 
   <div>
@@ -43,10 +27,11 @@
       Date
     </label>
 
-    <input type="text" id="date" name="date" value="<%= @interaction.date %>">
+    <input type="date" id="date" name="date" value="<%= @interaction.date %>" required>
   </div>
 
-  <button>
+<br>
+  <button class="btn btn-dark">
     Update interaction
   </button>
 </form>

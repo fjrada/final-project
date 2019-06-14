@@ -1,10 +1,10 @@
 <head>
-  <title>Edit Interest</title>
+  <title>Change Interest Name</title>
 </head>
 
 
 <h1>
-  Edit interest #<%= @interest.id %>
+  Change name for <%= @interest.name %>
 </h1>
 
 <hr>
@@ -14,27 +14,20 @@
 <form action="/update_interest_record/<%= @interest.id %>" method="post">
   <div>
     <label for="name">
-      Name
+      New Name
     </label>
 
-    <input type="text" id="name" name="name" value="<%= @interest.name %>">
+    <input type="text" id="name" name="name" value="<%= @interest.name %>" required>
   </div>
 
-  <div>
-    <label for="user_id">
-      User
-    </label>
-
-    <input type="text" id="user_id" name="user_id" value="<%= @interest.user_id %>">
-  </div>
-
-  <button>
+<br>
+  <button class="btn btn-dark">
     Update interest
   </button>
 </form>
 
 <hr>
 
-<a href="/interests">
+<a href="/interests/<%= @interest.id %>">
   Go back
 </a>
