@@ -15,7 +15,7 @@ class ContactsController < ApplicationController
 
     
     if @contact.nil?
-      redirect_to("/interests")
+      redirect_to("/contacts")
     else
       render("contact_templates/details.html.erb")
     end
