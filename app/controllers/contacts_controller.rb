@@ -9,6 +9,10 @@ class ContactsController < ApplicationController
     @contact = Contact.where({ :id => params.fetch("id_to_display") }).where({ :user_id => current_user.id}).first
     @interactions = Interaction.all.where({ :contact_id => params.fetch("id_to_display")})
     @interests = Interest.all.where({:id => Membership.where({ :contact_id => params.fetch("id_to_display")}).pluck(:interest_id)})
+    @interests_user = Interest.all.where({ :user_id => current_user.id})
+    @interaction = Interaction.new
+
+
     
     if @contact.nil?
       redirect_to("/interests")

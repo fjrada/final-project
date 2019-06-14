@@ -7,14 +7,15 @@
   <%= @interest.name %>
 </h1>
 
-<br>
+<hr>
 
 <h2>Contacts interested in <%= @interest.name %></h2>
 
 <div>
 
 
-<table>
+<table class="table">
+  <thead class="thead-dark">
   <tr>
     <th>First Name</th>
     <th>Last Name</th>
@@ -23,7 +24,7 @@
     <th>Details</th>
     <th>Remove Contact</th>
   </tr>
-
+  </thead>
   <% @contacts.order({ :last_name => :desc }).each do |contact| %>
 
   <tr>
@@ -49,7 +50,25 @@
   <% end %>
 </table>
 
-<a href="/add_contact_to_interest/<%= @interest.id %>">Add a contact</a>
+<form action="/insert_contact_to_interest/<%= @interest.id %>" method="post">
+
+  <div>
+    <select id="contact_id" name="contact_id" required placeholder="Add interest">
+      <option value="" disabled selected>Add new contact to interest</option>
+      <% @contacts_user.where({ :user_id => current_user.id}).each do |contact| %>
+        <option value="<%= contact.id %>" type="hidden"><%= contact.name %> <%= contact.last_name %></option>
+      <% end %>
+    </select>
+  </div>
+
+<br>    
+  <button class="btn btn-dark">
+    Submit
+  </button>
+</form>
+
+<hr>
+
   <div>
     <a href="/existing_interest_form/<%= @interest.id %>">
       Change interest name
@@ -62,4 +81,8 @@
     </a>
   </div>
 </div>
+
+
+
+
 

@@ -1,6 +1,8 @@
 class InterestsController < ApplicationController
   def list
     @interests = Interest.all.where({ :user_id => current_user.id})
+    @interest = Interest.new
+    @membership = Membership.new
 
     render("interest_templates/list.html.erb")
   end
@@ -8,7 +10,8 @@ class InterestsController < ApplicationController
   def details
     @interest = Interest.where({ :id => params.fetch("id_to_display") }).where({ :user_id => current_user.id}).first
     @contacts = Contact.where({ :id => Membership.where({ :interest_id => params.fetch("id_to_display")}).pluck(:contact_id)})
-    
+    @contacts_user = Contact.all.where({ :user_id => current_user.id})
+
     if @interest.nil?
         redirect_to("/interests")
     else  
@@ -35,7 +38,7 @@ class InterestsController < ApplicationController
     if @interest.valid?
       @interest.save
       
-      redirect_to("/interests/" + @interest.id.to_s, { :notice => "Interest created successfully." })
+      redirect_to("/interests", { :notice => "Interest created successfully." })
     else
       render("interest_templates/blank_form.html.erb")
     end

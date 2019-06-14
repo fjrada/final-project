@@ -7,10 +7,6 @@
   Interest list
 </h1>
 
-<a href="/new_interest_form">
-  Add a new interest
-</a>
-
 <hr>
 
 <table class="table">
@@ -19,6 +15,10 @@
 
     <th>
       Name
+    </th>
+
+    <th>
+      # of Contacts
     </th>
 
     <th>
@@ -34,6 +34,10 @@
     </td>
 
     <td>
+      <%= Contact.where({ :id => Membership.where({ :interest_id => interest.id}).pluck(:contact_id)}).count %>
+    </td>
+
+    <td>
       <a href="/interests/<%= interest.id %>">
         Show details
       </a>
@@ -42,4 +46,28 @@
   <% end %>
 </table>
 
-<%= @interests.count %>
+<hr>
+
+<h2>Add a new interest</h2>
+
+<form action="/insert_interest_record" method="post">
+  <div>
+    
+    <label for="name">
+      Interest name
+    </label>
+
+    <input type="text" id="name" name="name" value="<%= @interest.name %>" required>
+  </div>
+
+  <div>
+    <input type="hidden" id="user_id" name="user_id" value="<%= current_user.id %>">
+  </div>
+
+<br>
+  <button class="btn btn-dark">
+    Create interest
+  </button>
+</form>
+
+<br>

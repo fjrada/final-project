@@ -65,16 +65,18 @@
     </td>
 
     <td>
-      <%= contact.birthday %>
+     
+      <%= contact.birthday.month %>/<%= contact.birthday.day %>/<%= contact.birthday.year %>
     </td>
 
     <td>
-      <%= if Interaction.where({ :contact_id => contact.id}).empty?
-          else
+      <% if Interaction.where({ :contact_id => contact.id}).empty? %>
+          <%else%>
       
-            Interaction.where({ :contact_id => contact.id}).order({ :date => :desc }).first.date
+            <%=Interaction.where({ :contact_id => contact.id}).order({ :date => :desc }).first.date.month%>/<%=Interaction.where({ :contact_id => contact.id}).order({ :date => :desc }).first.date.day%>/<%=Interaction.where({ :contact_id => contact.id}).order({ :date => :desc }).first.date.year%>
+            
       
-          end%>
+          <%end%>
     </td>
     
     <td>
