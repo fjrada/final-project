@@ -88,15 +88,11 @@
 
 <hr>
 
-
+<% if @interactions.empty?%><%else%>
 
 <h2>Interactions</h2>
 
-<a href="/new_interaction_form/<%= @contact.id %>">
-  Add a new interaction
-</a>
 
-  <% if @interactions.empty?%><%else%>
 <table class="table">
   <thead class="thead-dark">
   <tr>
